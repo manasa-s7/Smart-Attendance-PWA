@@ -9,6 +9,9 @@ The app is designed especially for educational institutions, workshops, or event
 🔔 Push Notifications – Notifies user after attendance is recorded with location info.
 🛠️ No Backend Required – Fully functional using only localStorage.
 
+=> Check the live demo for this application 
+https://manasa-s7.github.io/Smart-Attendance-PWA/
+
 => Technology Stack
 HTML5, CSS3, JavaScript (Vanilla JS)
 Leaflet.js for map and geolocation
