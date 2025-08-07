@@ -1,0 +1,281 @@
+/* 🌈 Smart Attendance App - Professional UI CSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #f4f6fa;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  padding: 1.5rem 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: background 0.3s;
+}
+
+.login-page {
+  background: url('login-bg.jpg') no-repeat center center / cover;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  flex-direction: column;
+}
+
+.login-content {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4rem;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 550px;
+  width: 100%;
+}
+
+.login-content h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.login-content input,
+.login-content button {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+}
+
+.sidebar .brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-radius: 12px;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar nav button:hover,
+.sidebar nav button:focus {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  transform: translateX(5px);
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem;
+  background: #ffffff;
+  overflow-y: auto;
+  border-radius: 20px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card span {
+  font-size: 2rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.blue { background: #007bff; }
+.card.green { background: #28a745; }
+.card.orange { background: #fd7e14; }
+.card.red { background: #dc3545; }
+
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover,
+button:focus {
+  background: #0056b3;
+  outline: none;
+}
+
+input, select {
+  padding: 0.6rem;
+  margin: 0.6rem 0;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#reader {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+ul#logList {
+  list-style: none;
+  padding: 0;
+}
+
+ul#logList li {
+  padding: 0.8rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+#attendanceSheet {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+#attendanceSheet th, #attendanceSheet td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#attendanceSheet th {
+  background: #f1f3f5;
+}
+
+.dark {
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+}
+
+.dark main {
+  background-color: #292940;
+}
+
+.dark .sidebar {
+  background: linear-gradient(135deg, #444, #666);
+  color: #fff;
+}
+
+.dark .sidebar nav button {
+  color: #fff;
+}
+
+.dark .card {
+  box-shadow: none;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    border-radius: 0;
+    padding: 0.5rem 0.75rem;
+  }
+  .sidebar nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .sidebar nav button {
+    white-space: nowrap;
+    height: 40px;
+    padding: 0 1rem;
+  }
+  main {
+    margin: 0;
+    border-radius: 0;
+    padding: 1rem;
+  }
+}

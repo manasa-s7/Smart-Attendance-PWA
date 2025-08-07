@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Attendance App</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-512.png" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- LOGIN PAGE -->
+  <div class="login-page" id="loginPage">
+    <div class="login-content">
+      <h1>📘Smart Attendance</h1>
+      <p><strong>Every day counts.<br>Attend today, achieve tomorrow.</strong></p>
+      <input type="email" id="email" placeholder="Enter your email" />
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
+
+  <!-- WELCOME SCREEN -->
+  <div class="welcome-screen" id="welcomeScreen" style="display:none">
+    <h2>Welcome back!</h2>
+    <p>Preparing your dashboard...</p>
+  </div>
+
+  <!-- APP UI -->
+  <div class="app" id="app" style="display:none">
+    <aside class="sidebar">
+      <div class="brand">📘 Smart Attendance</div>
+      <nav>
+        <button onclick="showView('dashboard')">🏠 Dashboard</button>
+        <button onclick="showView('scanner')">📷 QR Scanner</button>
+        <button onclick="showView('logs')">📄 Attendance Logs</button>
+        <button onclick="showView('sheet')">📊 Attendance Sheet</button>
+        <button onclick="showView('map')">🗺️ Map</button>
+        <button onclick="showView('report')">📁 Admin Reports</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <main>
+      <header>
+        <span id="userInfo"></span>
+        <button onclick="toggleDarkMode()">🌓</button>
+      </header>
+
+      <section id="dashboard" class="view">
+        <h2>Dashboard</h2>
+        <div class="cards">
+          <div class="card blue">Total Scans<br><span id="totalScans">0</span></div>
+          <div class="card green">Today's Attendance<br><span id="todayCount">0</span></div>
+          <div class="card orange">Your %<br><span id="yourPercent">0%</span></div>
+          <div class="card red">Geo Status<br><span id="geoStatus">Unknown</span></div>
+        </div>
+        <p><strong>Tip:</strong> Go to Scanner → Scan QR code with value <code>attendance123</code></p>
+      </section>
+
+      <section id="scanner" class="view">
+        <h2>QR Scanner</h2>
+        <div id="reader"></div>
+        <p>Scan QR with value: <strong>attendance123</strong></p>
+      </section>
+
+      <section id="logs" class="view">
+        <h2>Attendance Logs</h2>
+        <ul id="logList"></ul>
+        <button onclick="exportLogs()">📥 Export CSV</button>
+      </section>
+
+      <section id="sheet" class="view">
+        <h2>Attendance Sheet</h2>
+        <table id="attendanceSheet">
+          <thead>
+            <tr><th>Email</th><th>Total Days</th><th>Present</th><th>%</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="map" class="view">
+        <h2>Campus Location</h2>
+        <div id="leafletMap" style="height: 400px; width: 100%; border-radius: 10px;"></div>
+      </section>
+
+      <section id="report" class="view">
+        <h2>Admin Reports</h2>
+        <p>Download attendance logs, view stats and prepare reports here.</p>
+        <button onclick="exportLogs()">📊 Download CSV Report</button>
+        <button onclick="viewUnauthorized()">🔐 View Unauthorized Attempts</button>
+        <button onclick="clearUnauthorized()">🧹 Clear Unauthorized Log</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+  </script>
+</body>
+</html>
